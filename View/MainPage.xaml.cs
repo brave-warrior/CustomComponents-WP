@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using CustomComponents.Resources;
 using CustomComponents.ViewModel;
+using GalaSoft.MvvmLight.Views;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace CustomComponents.View
 {
@@ -19,7 +21,7 @@ namespace CustomComponents.View
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel();
+            DataContext = SimpleIoc.Default.GetInstance<MainViewModel>();
         }
 
     }

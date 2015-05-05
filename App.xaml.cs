@@ -7,11 +7,17 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using CustomComponents.Resources;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
+using CustomComponents.View;
+using CustomComponents.ViewModel;
 
 namespace CustomComponents
 {
     public partial class App : Application
     {
+        public const string MAIN_PAGE = "MainPage";
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -55,6 +61,26 @@ namespace CustomComponents
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            SimpleIoc.Default.Register<INavigationService>(() =>
+            {
+                return CreateNavigationService();
+            }, true);
+
+            RegisterViewModels();
+        }
+
+        private INavigationService CreateNavigationService()
+        {
+            var navigationService = new GalaSoft.MvvmLight.Views.NavigationService();
+            navigationService.Configure(MAIN_PAGE, new Uri("/View/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            // NOTE Add here another pages
+
+            return navigationService;
+        }
+
+        private void RegisterViewModels()
+        {
+            SimpleIoc.Default.Register<MainViewModel>();
         }
 
         // Code to execute when a contract activation such as a file open or save picker returns 
