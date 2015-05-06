@@ -32,7 +32,8 @@ namespace CustomComponents.ViewModel
         /// Handles search view command
         /// </summary>
         private void HandleSearchView()
-        {   
+        {
+            NavigationService.NavigateTo(App.SEARCH_PAGE);
             // TODO Handle showing search view
         }
 

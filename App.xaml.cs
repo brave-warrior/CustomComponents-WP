@@ -17,6 +17,8 @@ namespace CustomComponents
     public partial class App : Application
     {
         public const string MAIN_PAGE = "MainPage";
+        public const string SEARCH_PAGE = "SearchPage";
+        public const string CUSTOM_PUSH_PIN_PAGE = "CustomPushPinPage";
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -73,6 +75,8 @@ namespace CustomComponents
         {
             var navigationService = new GalaSoft.MvvmLight.Views.NavigationService();
             navigationService.Configure(MAIN_PAGE, new Uri("/View/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            navigationService.Configure(SEARCH_PAGE, new Uri("/View/SearchPage.xaml", UriKind.RelativeOrAbsolute));
+            navigationService.Configure(CUSTOM_PUSH_PIN_PAGE, new Uri("/View/CustomPushPinPage.xaml", UriKind.RelativeOrAbsolute));
             // NOTE Add here another pages
 
             return navigationService;
@@ -81,6 +85,7 @@ namespace CustomComponents
         private void RegisterViewModels()
         {
             SimpleIoc.Default.Register<MainViewModel>();
+            // NOTE Add here another view models
         }
 
         // Code to execute when a contract activation such as a file open or save picker returns 
