@@ -94,9 +94,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\CustomPushPin.xaml.cs">
+      <DependentUpon>CustomPushPin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataGenerator.cs" />
+    <Compile Include="Data\Hotel.cs" />
     <Compile Include="Resources\LocalizedStrings.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CustomPushPinViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\CustomPushPinPage.xaml.cs">
+      <DependentUpon>CustomPushPinPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +124,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Control\CustomPushPin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomPushPinPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +160,7 @@
     </Content>
     <Content Include="Assets\BadgeLogo.png" />
     <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\pushpin.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\SquareTile150x150.png" />
     <Content Include="Assets\SquareTile71x71.png" />

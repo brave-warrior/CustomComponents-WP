@@ -34,7 +34,6 @@ namespace CustomComponents.ViewModel
         private void HandleSearchView()
         {
             NavigationService.NavigateTo(App.SEARCH_PAGE);
-            // TODO Handle showing search view
         }
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace CustomComponents.ViewModel
         /// </summary>
         private void HandleCustomPushPin()
         {
-            // TODO Handle showing custom push pin on the map
+            NavigationService.NavigateTo(App.CUSTOM_PUSH_PIN_PAGE);
         }
 
         /// <summary>

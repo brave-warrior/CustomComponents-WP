@@ -18,7 +18,7 @@ namespace CustomComponents.View
         {
             InitializeComponent();
 
-            DataContext = SimpleIoc.Default.GetInstance<CustomPushPinPage>();
+            DataContext = SimpleIoc.Default.GetInstance<CustomPushPinViewModel>();
         }
     }
 }

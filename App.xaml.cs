@@ -85,6 +85,7 @@ namespace CustomComponents
         private void RegisterViewModels()
         {
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<CustomPushPinViewModel>();
             // NOTE Add here another view models
         }
 
