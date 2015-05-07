@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using CustomComponents.Data;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,11 @@ namespace CustomComponents.ViewModel
         protected BaseViewModel(INavigationService navigationService)
         {
             NavigationService = navigationService;
+            DataProvider = DataGenerator.GenerateHotels();
         }
 
         protected INavigationService NavigationService { get; private set; }
+
+        protected List<Hotel> DataProvider { get; private set; }
     }
 }

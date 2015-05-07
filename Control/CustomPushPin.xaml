@@ -10,7 +10,7 @@
     d:DesignHeight="300" d:DesignWidth="300">
 
 
-    <StackPanel x:Name="LayoutRoot" Orientation="Vertical" Background="{StaticResource PhoneChromeBrush}">
+    <StackPanel x:Name="LayoutRoot" Orientation="Vertical" >
 
         <!-- Content -->
         <StackPanel x:Name="contentDetails">

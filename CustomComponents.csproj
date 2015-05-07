@@ -97,6 +97,7 @@
     <Compile Include="Control\CustomPushPin.xaml.cs">
       <DependentUpon>CustomPushPin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\CustomPushPinDependencies.cs" />
     <Compile Include="Data\DataGenerator.cs" />
     <Compile Include="Data\Hotel.cs" />
     <Compile Include="Resources\LocalizedStrings.cs" />
