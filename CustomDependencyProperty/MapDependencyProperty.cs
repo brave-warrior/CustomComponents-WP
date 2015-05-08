@@ -6,14 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace CustomComponents.Control
+namespace CustomComponents.CustomDependencyProperty
 {
-    public class CustomPushPinDependencies : DependencyObject
+    public class MapDependencyProperty : DependencyObject
     {
 
         // View property
         public static readonly DependencyProperty ViewProperty =
-            DependencyProperty.RegisterAttached("View", typeof(LocationRectangle), typeof(CustomPushPinDependencies),
+            DependencyProperty.RegisterAttached("View", typeof(LocationRectangle), typeof(MapDependencyProperty),
             new PropertyMetadata(OnViewPropertyChanged));
 
         private static void OnViewPropertyChanged(DependencyObject d,
@@ -36,7 +36,7 @@ namespace CustomComponents.Control
 
         // items source property
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.RegisterAttached("ItemsSource", typeof(List<MapLayer>), typeof(CustomPushPinDependencies),
+            DependencyProperty.RegisterAttached("ItemsSource", typeof(List<MapLayer>), typeof(MapDependencyProperty),
             new PropertyMetadata(OnItemsSourcePropertyChanged));
 
         private static void OnItemsSourcePropertyChanged(DependencyObject d,

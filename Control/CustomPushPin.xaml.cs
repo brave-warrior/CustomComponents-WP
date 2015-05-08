@@ -7,25 +7,44 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Device.Location;
 
 namespace CustomComponents.Control
 {
     public partial class CustomPushPin : UserControl
     {
-        public Data.Hotel Place { get; private set; }
 
+        // events
         public event NavigateActionHandler NavigateAction;
-        public delegate void NavigateActionHandler(CustomPushPin customPushPin, NavigateEventArgs e);
+        public delegate void NavigateActionHandler(CustomPushPin sender, EventArgs e);
 
         private bool _detailsVisible = false;
 
-        public CustomPushPin(Data.Hotel place)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public CustomPushPin()
         {
             InitializeComponent();
+            this.Loaded += CustomPushPin_Loaded;
+        }
 
-            Place = place;
-            UpdateDetails();
+        void CustomPushPin_Loaded(object sender, RoutedEventArgs e)
+        {
             UpdateDetailsVisibility();
+        }
+
+        public GeoCoordinate Coordinates { get; set; }
+
+        private string _details;
+        public string Details
+        {
+            get { return _details; }
+            set
+            {
+                _details = value;
+                this.detailsTextBlock.Text = _details;
+            }
         }
 
         /// <summary>
@@ -44,35 +63,13 @@ namespace CustomComponents.Control
         }
 
         /// <summary>
-        /// Formats details
-        /// </summary>
-        /// <returns></returns>
-        private string FormatDetails()
-        {
-            string address = string.Format("{0}\n{1}, {2}", Place.Name, Place.Street, Place.City);
-            return address;
-        }
-
-        /// <summary>
-        /// Updates details for showing
-        /// </summary>
-        private void UpdateDetails()
-        {
-            this.detailsTextBlock.Text = FormatDetails();
-        }
-
-        /// <summary>
         /// Handles button Navigate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void navigateBtn_Click(object sender, RoutedEventArgs e)
         {
-            // format details data
-            string address = FormatDetails();
-
-            // raising new event
-            NavigateEventArgs args = new NavigateEventArgs(Place.Lat, Place.Lon, address);
+            EventArgs args = new EventArgs();
             NavigateAction(this, args);
         }
 
@@ -87,22 +84,6 @@ namespace CustomComponents.Control
             UpdateDetailsVisibility();
         }
 
-        /// <summary>
-        /// Defines arguments for the event Navigate
-        /// </summary>
-        public class NavigateEventArgs : EventArgs
-        {
-            public NavigateEventArgs(double latitude, double longitude, string address)
-            {
-                Latitude = latitude;
-                Longitude = longitude;
-                Address = address;
-            }
-
-            public double Latitude { get; private set; }
-            public double Longitude { get; private set; }
-            public string Address { get; private set; }
-        }
     }
 
 }

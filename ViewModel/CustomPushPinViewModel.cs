@@ -9,6 +9,7 @@ using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CustomComponents.ViewModel
 {
@@ -41,6 +42,7 @@ namespace CustomComponents.ViewModel
                 overlay.Content = GeneratePushPin(hotel);
                 var coordinate = new GeoCoordinate(hotel.Lat, hotel.Lon);
                 overlay.GeoCoordinate = coordinate;
+                overlay.PositionOrigin = new Point(0.5, 1);
 
                 MapLayer mapLayer = new MapLayer();
                 mapLayer.Add(overlay);
@@ -60,7 +62,9 @@ namespace CustomComponents.ViewModel
         /// <returns>Pusp pin control</returns>
         private CustomPushPin GeneratePushPin(Hotel relatedHotel)
         {
-            var pushPin = new CustomPushPin(relatedHotel);
+            var pushPin = new CustomPushPin();
+            pushPin.Coordinates = new GeoCoordinate(relatedHotel.Lat, relatedHotel.Lon);
+            pushPin.Details = string.Format("{0}\n{1}, {2}", relatedHotel.Name, relatedHotel.Street, relatedHotel.City);
             pushPin.NavigateAction += pushPin_NavigateAction;
             return pushPin;
         }
@@ -68,11 +72,17 @@ namespace CustomComponents.ViewModel
         /// <summary>
         /// Called when pressed action navigate
         /// </summary>
-        /// <param name="customPushPin"></param>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pushPin_NavigateAction(CustomPushPin customPushPin, CustomPushPin.NavigateEventArgs e)
+        private void pushPin_NavigateAction(CustomPushPin sender, EventArgs e)
         {
-            StartDirections(e.Latitude, e.Longitude, e.Address);
+            GeoCoordinate coordinates = sender.Coordinates;
+            
+            if(coordinates != null && !string.IsNullOrEmpty(sender.Details))
+            {
+                StartDirections(coordinates.Latitude, coordinates.Longitude, sender.Details);
+            }
+            
         }
 
         /// <summary>

@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-    xmlns:dp="clr-namespace:CustomComponents.Control"
+    xmlns:dp="clr-namespace:CustomComponents.CustomDependencyProperty"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -36,8 +36,8 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <maps:Map dp:CustomPushPinDependencies.View="{Binding MapView}"
-                      dp:CustomPushPinDependencies.ItemsSource="{Binding Locations}"/>
+            <maps:Map  dp:MapDependencyProperty.View="{Binding MapView}"
+                      dp:MapDependencyProperty.ItemsSource="{Binding Locations}"/>
         </Grid>
     </Grid>
 

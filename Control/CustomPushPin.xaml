@@ -10,7 +10,7 @@
     d:DesignHeight="300" d:DesignWidth="300">
 
 
-    <StackPanel x:Name="LayoutRoot" Orientation="Vertical" >
+    <StackPanel x:Name="LayoutRoot" >
 
         <!-- Content -->
         <StackPanel x:Name="contentDetails">
@@ -21,7 +21,7 @@
                             Click="navigateBtn_Click"/>
             </StackPanel>
 
-            <Path
+            <Path 
                 Data="M0,0 L0,1 L1,0"
                 Fill="White"
                 Stretch="Fill"
@@ -29,7 +29,9 @@
                 Height="12"
                 Width="18"
                 HorizontalAlignment="Stretch" />
+
         </StackPanel>
+
 
         <Image x:Name="pushpin" Source="/Assets/pushpin.png" Stretch="Uniform" Height="40" Width="40"
                     HorizontalAlignment="Center" Tap="pushpin_Tap" />
