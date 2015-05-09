@@ -86,6 +86,7 @@ namespace CustomComponents
         {
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CustomPushPinViewModel>();
+            SimpleIoc.Default.Register<SearchViewModel>();
             // NOTE Add here another view models
         }
 

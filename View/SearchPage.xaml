@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -27,7 +28,51 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
+            <TextBox Grid.Row="0" x:Name="searchBox" AcceptsReturn="False" InputScope="Text" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="KeyUp">
+                        <i:InvokeCommandAction Command="{Binding InputCommand}" CommandParameter="{Binding ElementName=searchBox}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <TextBlock Grid.Row="1" x:Name="EmplyList" 
+                       Text="Nothing found" FontSize="35" TextWrapping="Wrap" 
+                       TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="499" 
+                       Margin="0,29,0,7" Visibility="{Binding IsNoData, Converter={StaticResource visibilityConverter}}" />
+
+            <phone:LongListSelector 
+                     Grid.Row="1" 
+                     ItemsSource="{Binding FilteredHotels}"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Margin="6,2,0,0"
+                     VirtualizingStackPanel.VirtualizationMode="Recycling">
+
+                <phone:LongListSelector.ItemTemplate>
+
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch" Margin="0,5,0,5" >
+
+                            <StackPanel x:Name="TextContent" Tag="{Binding Name}" Orientation="Vertical">
+                                <TextBlock x:Name="Name" Text="{Binding Name}" FontSize="30" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="Street" Text="{Binding Street}"  FontSize="25" Margin="0,0,10,0" />
+                                    <TextBlock x:Name="City" Text="{Binding City}"  FontSize="25" Margin="0,0,10,0" />
+                                </StackPanel>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+
+                </phone:LongListSelector.ItemTemplate>
+
+            </phone:LongListSelector>
         </Grid>
     </Grid>
 

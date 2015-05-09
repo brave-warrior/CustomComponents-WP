@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using CustomComponents.ViewModel;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace CustomComponents.View
 {
@@ -15,6 +17,7 @@ namespace CustomComponents.View
         public SearchPage()
         {
             InitializeComponent();
+            DataContext = SimpleIoc.Default.GetInstance<SearchViewModel>();
         }
     }
 }
