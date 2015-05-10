@@ -102,10 +102,14 @@
     <Compile Include="Data\DataGenerator.cs" />
     <Compile Include="Data\Hotel.cs" />
     <Compile Include="Resources\LocalizedStrings.cs" />
+    <Compile Include="ViewModel\BackgroundTaskViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CustomPushPinViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="View\BackgroundTaskPage.xaml.cs">
+      <DependentUpon>BackgroundTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomPushPinPage.xaml.cs">
       <DependentUpon>CustomPushPinPage.xaml</DependentUpon>
     </Compile>
@@ -128,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Control\CustomPushPin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BackgroundTaskPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,7 +216,12 @@
       <HintPath>packages\MvvmLightLibs.5.1.1.0\lib\wp81\System.Windows.Interactivity.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="BackgroundTaskAgent\BackgroundTaskAgent.csproj">
+      <Project>{c41191b0-e416-481d-b535-abc47e60f8ab}</Project>
+      <Name>BackgroundTaskAgent</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

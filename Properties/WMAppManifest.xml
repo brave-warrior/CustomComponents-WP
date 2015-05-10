@@ -9,6 +9,11 @@
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="/View/MainPage.xaml" ActivationPolicy="Resume" />
+      <ExtendedTask Name="BackgroundTask"> 
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="BackgroundTaskAgent" 
+                                Source="BackgroundTaskAgent" Type="BackgroundTaskAgent.ScheduledAgent" /> 
+      </ExtendedTask> 
+
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="CustomComponentsToken" TaskName="_default">

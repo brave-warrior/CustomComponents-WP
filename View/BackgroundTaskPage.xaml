@@ -1,16 +1,16 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="CustomComponents.View.MainPage"
+    x:Class="CustomComponents.View.BackgroundTaskPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -20,23 +20,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Custom Components" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Background Task" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"> 
-            
-            <Button Content="Search View" Command="{Binding SearchViewCommand}" />
-            
-            <Button Content="Custom PushPin" Command="{Binding CustomPushPinCommand}" />
-
-            <Button Content="Background Task" Command="{Binding BackgroundTaskCommand}" />
-            
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Button Content="Start background task" Command="{Binding StartBackgroundTaskCommand}"/>
+            <Button Content="Stop background task" Command="{Binding StopBackgroundTaskCommand}"/>
         </StackPanel>
-
     </Grid>
 
 </phone:PhoneApplicationPage>

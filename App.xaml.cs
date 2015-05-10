@@ -19,6 +19,7 @@ namespace CustomComponents
         public const string MAIN_PAGE = "MainPage";
         public const string SEARCH_PAGE = "SearchPage";
         public const string CUSTOM_PUSH_PIN_PAGE = "CustomPushPinPage";
+        public const string BACKGROUND_TASK_PAGE = "BackgroundTaskPage";
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -77,6 +78,7 @@ namespace CustomComponents
             navigationService.Configure(MAIN_PAGE, new Uri("/View/MainPage.xaml", UriKind.RelativeOrAbsolute));
             navigationService.Configure(SEARCH_PAGE, new Uri("/View/SearchPage.xaml", UriKind.RelativeOrAbsolute));
             navigationService.Configure(CUSTOM_PUSH_PIN_PAGE, new Uri("/View/CustomPushPinPage.xaml", UriKind.RelativeOrAbsolute));
+            navigationService.Configure(BACKGROUND_TASK_PAGE, new Uri("/View/BackgroundTaskPage.xaml", UriKind.RelativeOrAbsolute));
             // NOTE Add here another pages
 
             return navigationService;
@@ -87,6 +89,7 @@ namespace CustomComponents
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CustomPushPinViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
+            SimpleIoc.Default.Register<BackgroundTaskViewModel>();
             // NOTE Add here another view models
         }
 

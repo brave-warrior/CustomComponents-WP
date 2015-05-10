@@ -2,11 +2,13 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using Microsoft.Phone.Scheduler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CustomComponents.ViewModel
 {
@@ -15,17 +17,18 @@ namespace CustomComponents.ViewModel
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
+
         // handlers
         public RelayCommand SearchViewCommand { get; private set; }
         public RelayCommand CustomPushPinCommand { get; private set; }
-        public RelayCommand LiveTileWithUpdatesCommand { get; private set; }
+        public RelayCommand BackgroundTaskCommand { get; private set; }
 
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
             // handlers
             SearchViewCommand = new RelayCommand(HandleSearchView);
             CustomPushPinCommand = new RelayCommand(HandleCustomPushPin);
-            LiveTileWithUpdatesCommand = new RelayCommand(HandleLiveTileWithUpdates);
+            BackgroundTaskCommand = new RelayCommand(HandleBackgroundTaskCommand);
         }
 
         /// <summary>
@@ -45,11 +48,12 @@ namespace CustomComponents.ViewModel
         }
 
         /// <summary>
-        /// Handles showing live tile with updates
+        /// Handles Background task command
         /// </summary>
-        private void HandleLiveTileWithUpdates()
+        private void HandleBackgroundTaskCommand()
         {
-            // TODO Handle 
+            NavigationService.NavigateTo(App.BACKGROUND_TASK_PAGE);
         }
+
     }
 }
