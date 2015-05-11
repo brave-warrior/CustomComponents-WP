@@ -52,13 +52,20 @@ namespace CustomComponents.Control
         /// </summary>
         private void UpdateDetailsVisibility()
         {
+            // setting opacity simply changes background to visible,
+            // however, while opacity is 0, control is not visible, but it
+            // still can receive and handle all events
+            // NOTE: Decide which type of visibility should be applied
             if(_detailsVisible)
             {
+                this.contentDetails.Opacity = 1;
                 this.contentDetails.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
+                this.contentDetails.Opacity = 0;
                 this.contentDetails.Visibility = System.Windows.Visibility.Collapsed;
+                
             }
         }
 
