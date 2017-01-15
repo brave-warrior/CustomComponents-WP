@@ -5,7 +5,7 @@ There are:
 - Search View. Provides live search in the defined collection. The list is updated right after inputting some text and according to the matched text;
 - Simple background task. Demonstrates background work using PeriodicTask for updating Live Tile.
 
-#Used libraries
+#Dependencies
 - [MVVM Light](http://mvvmlight.codeplex.com/)
 
 #Contribution
